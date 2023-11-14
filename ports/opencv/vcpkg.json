@@ -1,6 +1,7 @@
 {
   "name": "opencv",
   "version": "4.8.0",
+  "port-version": 2,
   "description": "Computer vision library",
   "homepage": "https://github.com/opencv/opencv",
   "license": "Apache-2.0",
@@ -22,6 +23,18 @@
           "default-features": false,
           "features": [
             "ade"
+          ]
+        }
+      ]
+    },
+    "carotene":{
+      "description": "Enable NVidia carotene acceleration library",
+      "dependencies": [
+        {
+          "name": "opencv4",
+          "default-features": false,
+          "features": [
+            "carotene"
           ]
         }
       ]
@@ -96,6 +109,14 @@
             "gtk"
           ],
           "platform": "linux"
+        },
+        {
+          "name": "opencv4",
+          "default-features": false,
+          "features": [
+            "carotene"
+          ],
+          "platform":"(arm | arm64) & !ios"
         }
       ]
     },

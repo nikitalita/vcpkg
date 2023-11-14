@@ -55,6 +55,7 @@ set(ADE_DIR ${CURRENT_INSTALLED_DIR}/share/ade CACHE PATH "Path to existing ADE 
 vcpkg_check_features(OUT_FEATURE_OPTIONS FEATURE_OPTIONS
  FEATURES
  "ade"       WITH_ADE
+ "carotene"  WITH_CAROTENE
  "contrib"   WITH_CONTRIB
  "cuda"      WITH_CUBLAS
  "cuda"      WITH_CUDA
