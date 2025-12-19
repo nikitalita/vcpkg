@@ -18,6 +18,7 @@ vcpkg_from_github(
         0041-add-const-for-opengl-definition.patch
         0043-fix-miss-head.patch
         0044-fix-vulkan-debug-callback-abi.patch
+        0045-fix-placebo-msvc.patch
 )
 
 if(SOURCE_PATH MATCHES " ")
@@ -589,6 +590,30 @@ if ("vaapi" IN_LIST FEATURES)
 else()
     set(OPTIONS "${OPTIONS} --disable-vaapi")
     set(WITH_VAAPI OFF)
+endif()
+
+if ("svt-av1" IN_LIST FEATURES)
+    set(OPTIONS "${OPTIONS} --enable-libsvtav1")
+    set(WITH_SVT_AV1 ON)
+else()
+    set(OPTIONS "${OPTIONS} --disable-libsvtav1")
+    set(WITH_SVT_AV1 OFF)
+endif()
+
+if ("placebo" IN_LIST FEATURES)
+    set(OPTIONS "${OPTIONS} --enable-libplacebo")
+    set(WITH_PLACEBO ON)
+else()
+    set(OPTIONS "${OPTIONS} --disable-libplacebo")
+    set(WITH_PLACEBO OFF)
+endif()
+
+if ("shaderc" IN_LIST FEATURES)
+    set(OPTIONS "${OPTIONS} --enable-libshaderc")
+    set(WITH_SHADERC ON)
+else()
+    set(OPTIONS "${OPTIONS} --disable-libshaderc")
+    set(WITH_SHADERC OFF)
 endif()
 
 set(OPTIONS_CROSS "--enable-cross-compile")

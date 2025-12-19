@@ -54,6 +54,8 @@
             "openjpeg",
             "openmpt",
             "opus",
+            "placebo",
+            "shaderc",
             "snappy",
             "soxr",
             "speex",
@@ -160,6 +162,14 @@
           "name": "ffmpeg",
           "default-features": false,
           "features": [
+            "svt-av1"
+          ],
+          "platform": "!x86 & !arm32 & !uwp"
+        },
+        {
+          "name": "ffmpeg",
+          "default-features": false,
+          "features": [
             "opengl"
           ],
           "platform": "!uwp & !(arm64 & windows)"
@@ -192,17 +202,17 @@
           "name": "ffmpeg",
           "default-features": false,
           "features": [
-            "qsv"
+            "nvcodec"
           ],
-          "platform": "linux | (!osx & !uwp & !(arm & windows))"
+          "platform": "linux | (!osx & !uwp & !(arm64 & windows))"
         },
         {
           "name": "ffmpeg",
           "default-features": false,
           "features": [
-            "nvcodec"
+            "qsv"
           ],
-          "platform": "linux | (!osx & !uwp & !(arm64 & windows))"
+          "platform": "((x86 | x64) & (android | linux)) | (windows & !uwp)"
         }
       ]
     },
@@ -549,6 +559,12 @@
         "opus"
       ]
     },
+    "placebo": {
+      "description": "Flexible GPU-accelerated processing filter based on libplacebo",
+      "dependencies": [
+        "libplacebo"
+      ]
+    },
     "postproc": {
       "description": "Build the postproc library",
       "dependencies": [
@@ -563,6 +579,7 @@
     },
     "qsv": {
       "description": "Intel QSV Codec",
+      "supports": "((x86 | x64) & (android | linux)) | (windows & !uwp)",
       "dependencies": [
         "mfx-dispatch"
       ]
@@ -582,6 +599,12 @@
           "name": "sdl2",
           "platform": "!linux"
         }
+      ]
+    },
+    "shaderc": {
+      "description": "SPIR-V compiler",
+      "dependencies": [
+        "shaderc"
       ]
     },
     "snappy": {
@@ -620,6 +643,12 @@
       "description": "SFTP protocol via libssh",
       "dependencies": [
         "libssh"
+      ]
+    },
+    "svt-av1": {
+      "description": "AV1 encoding support",
+      "dependencies": [
+        "svt-av1"
       ]
     },
     "swresample": {
